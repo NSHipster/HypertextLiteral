@@ -108,7 +108,7 @@ let startTag: HTML = "<h1>", endTag: HTML = "</h1>"
 #"\#(startTag)Hello, world!\#(endTag)"# as HTML
 // <h1>Hello, world!</h1>
 
-#"\#(unsafeUnescaped: "<h1>")Hello, world!\#(unsafeUnescaped: "</h1>)"# as HTML
+#"\#(unsafeUnescaped: "<h1>")Hello, world!\#(unsafeUnescaped: "</h1>")"# as HTML
 // <h1>Hello, world!</h1>
 ```
 
