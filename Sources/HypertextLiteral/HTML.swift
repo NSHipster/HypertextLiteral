@@ -1,8 +1,21 @@
 import Foundation
 
+/**
+ An object whose content can be created using string interpolation
+ in a way that interprets values according to the context
+ at which the interpolation occurs.
+
+ For more information,
+ see [this project's README](https://github.com/NSHipster/HypertextLiteral).
+ */
 public struct HTML: LosslessStringConvertible, Equatable, Hashable {
+    /// The HTML content.
     public var description: String
 
+    /**
+     Creates an HTML object with the specified content.
+     - Parameter description: The HTML content.
+     */
     public init(_ description: String) {
         self.description = description
     }
