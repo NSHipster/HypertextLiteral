@@ -225,27 +225,6 @@ you can use hypertext literals for [XML][xml] and other [SGML][sgml] formats.
 Below is an example of how `HypertextLiteral` can be used
 to generate an SVG document.
 
-<figure style="width: 200px; float: right">
-<figcaption>Result</figcaption>
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-  <g stroke="#FFFFEE" stroke-width="3">
-    <rect x="12.0" y="28.0"
-      width="60.0" height="60.0"
-      rx="10.0" ry="10.0"
-      fill="#F06507"/>
-    <rect x="27.0" y="18.0"
-      width="55.0" height="55.0"
-      rx="10.0" ry="10.0"
-      fill="#F2A02D"/>
-    <rect x="47.0" y="11.0"
-      width="40.0" height="40.0"
-      rx="10.0" ry="10.0"
-      fill="#FEC352"/>
-  </g>
-</svg>
-
-</figure>
-
 ```swift
 import HypertextLiteral
 
