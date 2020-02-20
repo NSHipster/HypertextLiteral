@@ -82,15 +82,15 @@ consider the following examples:
 
 ```swift
 let level: Int = 1
-#"<h\#(level)>Hello, world!</h\#(level)>"# as HTML
+"<h\(level)>Hello, world!</h\(level)>" as HTML
 // <h1>Hello, world!</h1>
 
 let elementName: String = "h1"
-#"<\#(elementName)>Hello, world!</\#(elementName)>"# as HTML
+"<\(elementName)>Hello, world!</\(elementName)>" as HTML
 // <h1>Hello, world!</h1>
 
 let startTag: String = "<h1>", endTag: String = "</h1>"
-#"\#(startTag)Hello, world!\#(endTag)"# as HTML
+"\(startTag)Hello, world!\(endTag)" as HTML
 // &lt;h1&gt;Hello, world!&lt;/h1&gt;
 ```
 
@@ -105,10 +105,10 @@ or interpolate using the `unsafeUnescaped` argument label.
 
 ```swift
 let startTag: HTML = "<h1>", endTag: HTML = "</h1>"
-#"\#(startTag)Hello, world!\#(endTag)"# as HTML
+"\(startTag)Hello, world!\(endTag)" as HTML
 // <h1>Hello, world!</h1>
 
-#"\#(unsafeUnescaped: "<h1>")Hello, world!\#(unsafeUnescaped: "</h1>")"# as HTML
+"\(unsafeUnescaped: "<h1>")Hello, world!\(unsafeUnescaped: "</h1>")" as HTML
 // <h1>Hello, world!</h1>
 ```
 
