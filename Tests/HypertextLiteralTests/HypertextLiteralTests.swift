@@ -119,7 +119,7 @@ final class HypertextLiteralTests: XCTestCase {
 
     func testStringLiteralWithStyleAttributeInterpolation() throws {
         let style: [String: Any] = [
-            "background": "flamingo",
+            "background": "orangered",
             "font-weight": 700
         ]
 
@@ -128,7 +128,7 @@ final class HypertextLiteralTests: XCTestCase {
         """#
 
         let expected = #"""
-        <span style="background: flamingo; font-weight: 700;">Swift</span>
+        <span style="background: orangered; font-weight: 700;">Swift</span>
         """#
 
         XCTAssertEqual(html.description, expected)
@@ -144,7 +144,7 @@ final class HypertextLiteralTests: XCTestCase {
                 "count": 3,
             ],
             "style": [
-                "background": "flamingo",
+                "background": "orangered",
                 "font-weight": 700
             ]
         ]
@@ -154,7 +154,7 @@ final class HypertextLiteralTests: XCTestCase {
         """#
 
         let expected = #"""
-        <section aria-role="article" data-count="3" data-index="1" style="background: flamingo; font-weight: 700;">…</section>
+        <section aria-role="article" data-count="3" data-index="1" style="background: orangered; font-weight: 700;">…</section>
         """#
 
         XCTAssertEqual(html.description, expected)

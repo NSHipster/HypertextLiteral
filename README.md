@@ -153,12 +153,12 @@ it's automatically converted to CSS.
 
 ```swift
 let style: [String: Any] = [
-    "background": "flamingo",
+    "background": "orangered",
     "font-weight": 700
 ]
 
 "<span style=\(style)>Swift</span>" as HTML
-// <span style="background: flamingo; font-weight: 700;">Swift</span>
+// <span style="background: orangered; font-weight: 700;">Swift</span>
 ```
 
 The Boolean value `true` interpolates to different values depending the attribute.
