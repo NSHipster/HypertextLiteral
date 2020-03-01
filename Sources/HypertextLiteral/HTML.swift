@@ -369,7 +369,7 @@ extension HTML: ExpressibleByStringInterpolation {
 
 fileprivate extension StringProtocol {
     var escaped: String {
-        #if os(macOS) || os(iOS) || os(watchOS) || os(tvOS)
+        #if os(macOS)
         return (CFXMLCreateStringByEscapingEntities(nil, String(self) as NSString, nil)! as NSString) as String
         #else
         return [
