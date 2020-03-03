@@ -6,11 +6,19 @@ jobs:
   macos:
     runs-on: macOS-latest
 
+    strategy:
+      matrix:
+        destination:
+          - platform=macOS
+          - platform=iOS Simulator,name=iPhone 11
+
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Build and Test
-        run: swift test
+      - name: Generate Xcode Project
+        run: swift package generate-xcodeproj
+      - name: Run Test Target
+        run: xcodebuild test -destination '${{ matrix.destination }}' -scheme HypertextLiteral-Package
 
   linux:
     runs-on: ubuntu-latest
