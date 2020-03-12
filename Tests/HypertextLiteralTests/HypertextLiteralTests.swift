@@ -1,6 +1,5 @@
 import XCTest
-@testable import HypertextLiteral
-import Foundation
+import HypertextLiteral
 
 final class HypertextLiteralTests: XCTestCase {
     func testOriginalHyperTextLiteralEquivalence() throws {
