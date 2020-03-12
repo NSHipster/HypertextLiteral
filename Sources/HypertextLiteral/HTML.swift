@@ -347,11 +347,11 @@ extension HTML: ExpressibleByStringInterpolation {
             }
         }
 
-        mutating func appendInterpolation(unsafeUnescaped string: String) {
+        public mutating func appendInterpolation(unsafeUnescaped string: String) {
             appendLiteral(string)
         }
 
-        mutating func appendInterpolation(comment string: String) {
+        public mutating func appendInterpolation(comment string: String) {
             let string = string.replacingOccurrences(of: "<!--", with: "")
                                .replacingOccurrences(of: "-->", with: "")
                                .trimmingCharacters(in: .whitespacesAndNewlines)
