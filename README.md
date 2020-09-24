@@ -52,7 +52,7 @@ let package = Package(
   dependencies: [
     .package(
         url: "https://github.com/NSHipster/HypertextLiteral",
-        from: "0.0.1"
+        from: "0.0.3"
     ),
   ]
 )
