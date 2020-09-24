@@ -159,7 +159,7 @@ final class HypertextLiteralTests: XCTestCase {
         XCTAssertEqual(html.description, expected)
     }
 
-    func testStringLiteralWithBooleanAttributeInterpolation() throws {
+    func testStringLiteralWithBooleanAttributeInterpolationOfTrueValues() throws {
         let attributes: [String: Any] = [
             "aria": [
                 "label": true
@@ -176,6 +176,28 @@ final class HypertextLiteralTests: XCTestCase {
 
         let expected = #"""
         <input aria-label="true" autocomplete="on" spellcheck="spellcheck" translate="yes" type="text"/>
+        """#
+
+        XCTAssertEqual(html.description, expected)
+    }
+
+    func testStringLiteralWithBooleanAttributeInterpolationOfFalseValues() throws {
+        let attributes: [String: Any] = [
+            "aria": [
+                "label": false
+            ],
+            "autocomplete": false,
+            "spellcheck": false,
+            "translate": false,
+            "type": "text"
+        ]
+
+        let html: HTML = #"""
+        <input \#(attributes)/>
+        """#
+
+        let expected = #"""
+        <input aria-label="false" autocomplete="off" translate="no" type="text"/>
         """#
 
         XCTAssertEqual(html.description, expected)
