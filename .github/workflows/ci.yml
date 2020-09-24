@@ -9,8 +9,8 @@ jobs:
     strategy:
       matrix:
         xcode:
-          - "11" # Swift 5.1
-          - "11.4" # Swift 5.2
+          - "11.3.1" # Swift 5.1
+          - "11.7" # Swift 5.2
           - "12" # Swift 5.3
         destination:
           - platform=macOS
