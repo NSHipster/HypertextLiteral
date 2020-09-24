@@ -295,6 +295,7 @@ extension HTML: ExpressibleByStringInterpolation {
         self.init(stringInterpolation.value)
     }
 
+    /// The type each segment of a string literal containing interpolations should be appended to.
     public struct StringInterpolation: StringInterpolationProtocol {
         fileprivate var value: String = ""
 
