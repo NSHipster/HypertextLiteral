@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed handling of boolean attributes.
   #3 by @siemensikkema.
 
+### Changed
+
+- Changed CI to test for Swift 5.1, 5.2, and 5.3 
+  #4 by @mattt and @MaxDesiatov.
+
 ## [0.0.2] - 2020-03-12
 
 ### Fixed
