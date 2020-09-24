@@ -36,7 +36,7 @@ Less time fighting your tools means more time spent generating web content.
 
 ## Requirements
 
-- Swift 5.0+
+- Swift 5.1+
 
 ## Installation
 
