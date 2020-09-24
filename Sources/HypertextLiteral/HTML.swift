@@ -24,6 +24,7 @@ public struct HTML: LosslessStringConvertible, Equatable, Hashable {
 // MARK: - HypertextConvertible
 
 extension HTML: HypertextLiteralConvertible {
+    /// A representation of this instance in a hypertext literal.
     public var html: HTML {
         return self
     }
