@@ -60,8 +60,6 @@ extension Bool: HypertextAttributeValueInterpolatable {
 
 extension Dictionary: HypertextAttributesInterpolatable where Key: StringProtocol {
     public func html(in element: String) -> HTML {
-        var attributes: [(name: String, value: String)] = []
-
         func attribute(for key: String, value: Any) -> (name: String, value: String)? {
             guard let interpolatableValue = value as? HypertextAttributeValueInterpolatable else {
                 return (key, "\(value)")
@@ -70,15 +68,15 @@ extension Dictionary: HypertextAttributesInterpolatable where Key: StringProtoco
             return interpolatableValue.html(for: key, in: element).map { (key, $0.description) }
         }
 
-        for (key, value) in self {
+        let attributes = flatMap { (key, value) -> [(name: String, value: String)] in
             switch key {
             case "aria", "data":
                 guard let value = value as? [String: Any] else { fallthrough }
-                for (nestedKey, nestedValue) in value {
-                    attribute(for: "\(key)-\(nestedKey)", value: nestedValue).map { attributes.append($0) }
+                return value.compactMap { (nestedKey, nestedValue) in
+                    attribute(for: "\(key)-\(nestedKey)", value: nestedValue)
                 }
             default:
-                attribute(for: "\(key)", value: value).map { attributes.append($0) }
+                return [attribute(for: "\(key)", value: value)].compactMap { $0 }
             }
         }
 
