@@ -47,7 +47,7 @@ extension Bool: HypertextAttributeValueInterpolatable {
              // Script Attributes
              "async",
              "defer":
-            return HTML(attribute)
+            return self ? HTML(attribute) : nil
         case "translate":
             return HTML(self ? "yes" : "no")
         case "autocomplete":
@@ -60,25 +60,23 @@ extension Bool: HypertextAttributeValueInterpolatable {
 
 extension Dictionary: HypertextAttributesInterpolatable where Key: StringProtocol {
     public func html(in element: String) -> HTML {
-        var attributes: [(name: String, value: String)] = []
-
-        func attribute(for key: String, value: Any) -> (name: String, value: String) {
-            if let html = (value as? HypertextAttributeValueInterpolatable)?.html(for: key, in: element) {
-                return (key, html.description)
-            } else {
+        func attribute(for key: String, value: Any) -> (name: String, value: String)? {
+            guard let interpolatableValue = value as? HypertextAttributeValueInterpolatable else {
                 return (key, "\(value)")
             }
+
+            return interpolatableValue.html(for: key, in: element).map { (key, $0.description) }
         }
 
-        for (key, value) in self {
+        let attributes = flatMap { (key, value) -> [(name: String, value: String)] in
             switch key {
             case "aria", "data":
                 guard let value = value as? [String: Any] else { fallthrough }
-                for (nestedKey, nestedValue) in value {
-                    attributes.append(attribute(for: "\(key)-\(nestedKey)", value: nestedValue))
+                return value.compactMap { (nestedKey, nestedValue) in
+                    attribute(for: "\(key)-\(nestedKey)", value: nestedValue)
                 }
             default:
-                attributes.append(attribute(for: "\(key)", value: value))
+                return [attribute(for: "\(key)", value: value)].compactMap { $0 }
             }
         }
 
